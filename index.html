@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurant montagnard à Briançon - Spécialités savoyardes, fondues, raclettes, brunchs, crêpes et glaces artisanales. Cuisine maison avec produits locaux de qualité.">
+    <title>Le Vauban Gourmand - Restaurant Montagnard à Briançon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-mountain-dark: #1a5d57;
+            --color-mountain: #2d7d76;
+            --color-mountain-light: #3da89f;
+            --color-pine-dark: #0c3b2e;
+            --color-pine: #1a5d4a;
+            --color-pine-light: #2d7d62;
+            --color-sky-dark: #1e3f66;
+            --color-sky: #2d5a8a;
+            --color-sky-light: #3d7ab8;
+            --color-cloud: #f8f9fa;
+            --color-snow: #f0f7fa;
+            --color-text: #333;
+            --color-light: #f8f9fa;
+            --color-accent: #e67e22;
+            --font-heading: 'Georgia', serif;
+            --font-body: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--color-text);
+            background: linear-gradient(to bottom, var(--color-sky-light), var(--color-sky), var(--color-sky-dark));
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 Q20,80 40,100 T80,100 L100,100 L100,0 L0,0 Z" fill="%232d7d76" opacity="0.1"/></svg>');
+            background-size: 200px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Montagnes décoratives */
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: -1;
+        }
+
+        .mountain-range {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0,200 Q300,100 600,150 T1200,200 L1200,200 L0,200 Z" fill="%231a5d57"/></svg>');
+            background-size: 1200px 200px;
+        }
+
+        .mountain-range:nth-child(2) {
+            height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0,200 Q200,50 400,100 T800,150 T1200,200 L1200,200 L0,200 Z" fill="%232d7d76"/></svg>');
+            opacity: 0.8;
+        }
+
+        .mountain-range:nth-child(3) {
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0,200 Q400,120 800,180 T1200,200 L1200,200 L0,200 Z" fill="%233da89f"/></svg>');
+            opacity: 0.6;
+        }
+
+        /* Sapins décoratifs */
+        .pine-tree {
+            position: absolute;
+            bottom: 0;
+            width: 60px;
+            height: 80px;
+            z-index: 1;
+        }
+
+        .pine-tree::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 30px;
+            background: var(--color-pine-dark);
+        }
+
+        .pine-tree::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 40px solid var(--color-pine);
+        }
+
+        .pine-tree:nth-child(4n+1) {
+            left: 10%;
+            height: 70px;
+        }
+
+        .pine-tree:nth-child(4n+2) {
+            left: 25%;
+            height: 90px;
+        }
+
+        .pine-tree:nth-child(4n+3) {
+            left: 65%;
+            height: 85px;
+        }
+
+        .pine-tree:nth-child(4n+4) {
+            left: 85%;
+            height: 75px;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-mountain);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--color-pine);
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-mountain-light);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-mountain);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%233da89f"/><path d="M0,400 Q200,300 400,350 T800,400 L800,400 L0,400 Z" fill="%232d7d76"/><path d="M0,400 Q100,350 200,380 T400,360 T600,380 T800,400 L800,400 L0,400 Z" fill="%231a5d57"/><path d="M100,400 L150,350 L130,370 L170,340 L190,360 L220,330 L250,360 L280,340 L310,360 L340,330 L370,360 L400,340 L430,360 L460,330 L490,360 L520,340 L550,360 L580,330 L610,360 L640,340 L670,360 L700,330 L730,360 L760,340 L790,360 L800,400 Z" fill="%231a5d4a"/><circle cx="100" cy="300" r="30" fill="%231a5d4a"/><circle cx="250" cy="320" r="40" fill="%231a5d4a"/><circle cx="400" cy="310" r="35" fill="%231a5d4a"/><circle cx="550" cy="330" r="25" fill="%231a5d4a"/><circle cx="700" cy="300" r="30" fill="%231a5d4a"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem 8rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid var(--color-accent);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--color-mountain);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            color: var(--color-mountain-dark);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2.2rem;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--color-mountain-light), var(--color-accent));
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-bg {
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--color-mountain);
+            margin-top: 1rem;
+            display: block;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--color-mountain-light), var(--color-sky));
+            opacity: 0.7;
+        }
+
+        .about-image-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .about-image-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .specialties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: all 0.4s;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+            z-index: 1;
+        }
+
+        .card-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            z-index: 2;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--color-accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 2;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .card-content {
+            padding: 1.8rem;
+        }
+
+        .card-content p {
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            display: inline-block;
+            background-color: var(--color-mountain-light);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .card-btn:hover {
+            background-color: var(--color-mountain);
+        }
+
+        .menu-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: linear-gradient(to bottom, var(--color-cloud), white);
+            padding: 1.8rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item h3 {
+            color: var(--color-mountain);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+        }
+
+        .menu-item .price {
+            color: var(--color-accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .menu-item ul {
+            padding-left: 1.2rem;
+            color: #555;
+        }
+
+        .menu-item li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .menu-item li::before {
+            content: "•";
+            color: var(--color-mountain-light);
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            top: -3px;
+        }
+
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .drink-category {
+            background: linear-gradient(to bottom, var(--color-cloud), white);
+            padding: 1.8rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .drink-category h3 {
+            color: var(--color-mountain);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+
+        .drink-category h3 i {
+            margin-right: 10px;
+            color: var(--color-accent);
+        }
+
+        .drink-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .drink-item:last-child {
+            border-bottom: none;
+        }
+
+        .drink-name {
+            font-weight: 500;
+        }
+
+        .drink-price {
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(to bottom right, var(--color-cloud), white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--color-mountain);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            color: var(--color-mountain);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .hours {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 0.8rem 1.5rem;
+            justify-content: center;
+        }
+
+        .hours span:first-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--color-mountain);
+        }
+
+        .hours span:last-child {
+            text-align: left;
+        }
+
+        .map {
+            height: 400px;
+            background-color: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(45, 125, 118, 0.2), rgba(26, 93, 87, 0.4));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer {
+            background: linear-gradient(to bottom, var(--color-pine-dark), var(--color-pine));
+            color: white;
+            padding: 4rem 1rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .footer-top {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-section h3 {
+            color: var(--color-cloud);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--color-cloud);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section a i {
+            margin-right: 10px;
+            color: var(--color-accent);
+        }
+
+        .footer-section a:hover {
+            color: var(--color-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .phone-highlight {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 2px dashed var(--color-accent);
+        }
+
+        .phone-highlight .phone-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            margin: 10px 0;
+        }
+
+        .reservation-info {
+            background-color: var(--color-cloud);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--color-mountain-light);
+        }
+
+        .reservation-info i {
+            color: var(--color-accent);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 4rem 1rem 6rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                display: block;
+                margin: 1rem auto;
+                max-width: 300px;
+            }
+
+            .phone-highlight .phone-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .phone-highlight .phone-number {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Montagnes décoratives -->
+    <div class="mountains">
+        <div class="mountain-range"></div>
+        <div class="mountain-range"></div>
+        <div class="mountain-range"></div>
+        <div class="pine-tree"></div>
+        <div class="pine-tree"></div>
+        <div class="pine-tree"></div>
+        <div class="pine-tree"></div>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                Le <span>Vauban</span> Gourmand
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#a-propos">À propos</a></li>
+                    <li><a href="#specialites">Spécialités</a></li>
+                    <li><a href="#brunch">Brunch</a></li>
+                    <li><a href="#boissons">Boissons</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>Bienvenue au Vauban Gourmand</h1>
+            <p>Découvrez des spécialités montagnardes faites maison au cœur de la vieille ville de Briançon</p>
+            <a href="#brunch" class="btn">Découvrir nos brunchs</a>
+            <a href="#contact" class="btn btn-outline">Réserver par téléphone</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container" id="a-propos">
+        <div class="section-bg">
+            <h2>Notre Histoire</h2>
+            <div class="about">
+                <div class="about-text">
+                    <p>Bienvenue au <strong>Vauban Gourmand</strong>, un restaurant familial tenu par Hubert et Valérie, où nous mettons tout notre cœur à vous proposer une cuisine montagnarde authentique et généreuse.</p>
+                    <p>Installés au 55 Grande Rue dans la magnifique vieille ville de Briançon, nous vous accueillons dans un cadre chaleureux et convivial, "comme à la maison", avec vue sur les montagnes environnantes.</p>
+                    <p>Notre philosophie : des plats <strong>faits maison</strong> avec des <strong>ingrédients de qualité</strong> et <strong>locaux</strong> : fromages de Savoie (Abondance IGP, Beaufort IGP, Emmental IGP, Comté AOP), fromages de la Fromagerie de Château Queyras, vins locaux, et farines biologiques pour nos délicieuses crêpes.</p>
+                    <p>Valérie prépare avec amour ses confitures maison allégées en sucre (myrtille, framboise, abricot) et nos pâtisseries. Hubert excelle dans la préparation des fondues, raclettes et paninis gourmands.</p>
+                    <span class="signature">Hubert & Valérie</span>
+
+                    <div class="reservation-info">
+                        <i class="fas fa-phone-alt fa-2x"></i>
+                        <h3>Pour réserver une table</h3>
+                        <p>Veuillez nous appeler au numéro suivant :</p>
+                        <div class="phone-number">06 73 42 36 50</div>
+                        <p>Nous sommes à votre disposition pour toute réservation</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-content">
+                        <div>
+                            <h3>Au cœur des montagnes</h3>
+                            <p>Une cuisine authentique avec les saveurs des Alpes</p>
+                            <p><i class="fas fa-utensils"></i> Produits locaux <i class="fas fa-seedling"></i> Fait maison</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="container" id="specialites">
+        <div class="section-bg">
+            <h2>Nos Spécialités</h2>
+            <div class="specialties">
+                <div class="card">
+                    <div class="card-header" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"180\" viewBox=\"0 0 400 180\"><rect width=\"400\" height=\"180\" fill=\"%231a5d57\"/><circle cx=\"200\" cy=\"100\" r=\"80\" fill=\"%232d7d76\"/><circle cx=\"200\" cy=\"100\" r=\"70\" fill=\"%233da89f\"/></svg>'); background-size: cover;"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-cheese"></i>
+                    </div>
+                    <h3 class="card-title">Fondues & Raclettes</h3>
+                    <div class="card-content">
+                        <p>Dégustez nos fondues savoyardes traditionnelles et raclettes avec des fromages d'exception, accompagnées de charcuteries de qualité et de pommes de terre.</p>
+                        <a href="#" class="card-btn">Découvrir</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"180\" viewBox=\"0 0 400 180\"><rect width=\"400\" height=\"180\" fill=\"%231a5d57\"/><rect x=\"100\" y=\"40\" width=\"200\" height=\"100\" rx=\"10\" fill=\"%232d7d76\"/><circle cx=\"150\" cy=\"90\" r=\"20\" fill=\"%233da89f\"/><circle cx=\"250\" cy=\"90\" r=\"20\" fill=\"%233da89f\"/></svg>'); background-size: cover;"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-egg"></i>
+                    </div>
+                    <h3 class="card-title">Brunchs Montagnards</h3>
+                    <div class="card-content">
+                        <p>Nos brunchs copieux vous attendent le week-end avec des produits frais et locaux : Brunch Montagnard, Italien, Estival et Formule Locale.</p>
+                        <a href="#brunch" class="card-btn">Voir les brunchs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"180\" viewBox=\"0 0 400 180\"><rect width=\"400\" height=\"180\" fill=\"%231a5d57\"/><circle cx=\"200\" cy=\"100\" r=\"70\" fill=\"%232d7d76\" stroke=\"%233da89f\" stroke-width=\"2\"/><path d=\"M130,100 Q200,40 270,100 Q200,160 130,100 Z\" fill=\"%233da89f\"/></svg>'); background-size: cover;"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-pancakes"></i>
+                    </div>
+                    <h3 class="card-title">Crêpes Artisanales</h3>
+                    <div class="card-content">
+                        <p>Crêpes sucrées et salées préparées avec des œufs de poules élevées en plein air, farine biologique et lait entier de montagne. Accompagnées des confitures maison de Valérie.</p>
+                        <a href="#" class="card-btn">Voir les crêpes</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"180\" viewBox=\"0 0 400 180\"><rect width=\"400\" height=\"180\" fill=\"%231a5d57\"/><rect x=\"150\" y=\"60\" width=\"100\" height=\"60\" rx=\"5\" fill=\"%232d7d76\"/><circle cx=\"170\" cy=\"90\" r=\"15\" fill=\"%233da89f\"/><circle cx=\"200\" cy=\"70\" r=\"15\" fill=\"%233da89f\"/><circle cx=\"230\" cy=\"90\" r=\"15\" fill=\"%233da89f\"/></svg>'); background-size: cover;"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3 class="card-title">Glaces Artisanales</h3>
+                    <div class="card-content">
+                        <p>Découvrez nos coupes glacées avec des glaces sans colorant ni additif, parfaites pour se rafraîchir lors des chaudes journées d'été en montagne.</p>
+                        <a href="#" class="card-btn">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brunch Menu Section -->
+    <section class="container" id="brunch">
+        <div class="section-bg">
+            <h2>Nos Brunchs</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-style: italic;">Tous nos brunchs incluent une boisson (café ou thé)</p>
+
+            <div class="menu-highlights">
+                <div class="menu-item">
+                    <h3>Brunch Montagnard <span class="price">16€</span></h3>
+                    <ul>
+                        <li>Salade verte fraîche du marché</li>
+                        <li>Omelette (2 œufs bio) avec fromage raclette fondant</li>
+                        <li>Assortiment de charcuteries locales</li>
+                        <li>Gratin dauphinois traditionnel</li>
+                        <li>Fromage blanc avec confiture de myrtille maison allégée en sucre</li>
+                    </ul>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Brunch Italien <span class="price">18€</span></h3>
+                    <ul>
+                        <li>Salade de tomates, mozzarella di buffala et basilic frais</li>
+                        <li>1 tranche de jambon cru de qualité supérieure</li>
+                        <li>Lasagnes maison à la bolognaise</li>
+                        <li>Panna cotta maison aux coulis de myrtilles</li>
+                    </ul>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Brunch Estival <span class="price">18€</span></h3>
+                    <ul>
+                        <li>Salade verte, crudités de saison, cake aux légumes maison</li>
+                        <li>Poulet fermier au curry doux, gratin ravioles comté et courgettes</li>
+                        <li>2 boules de glace artisanale (au choix)</li>
+                    </ul>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Formule Locale <span class="price">20€</span></h3>
+                    <ul>
+                        <li>Salade verte, 2 tourtons aux épinards, 2 ravioles du pays</li>
+                        <li>1 tranche de jambon cru, melon de Cavaillon</li>
+                        <li>1 tranche de tome du Queyras affinée</li>
+                        <li>Gratin d'oreilles d'ânes (spécialité locale)</li>
+                        <li>Crêpe au coulis de myrtilles maison</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn">
+                    <i class="fas fa-file-pdf"></i> Télécharger tous nos menus (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drinks Section -->
+    <section class="container" id="boissons">
+        <div class="section-bg">
+            <h2>Nos Boissons</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-style: italic;">Découvrez notre sélection de boissons pour accompagner vos repas ou vous rafraîchir</p>
+
+            <div class="drinks-grid">
+                <div class="drink-category">
+                    <h3><i class="fas fa-beer"></i> Bières Locales</h3>
+                    <div class="drink-item">
+                        <span class="drink-name">Le Galibier - Blonde</span>
+                        <span class="drink-price">5,50€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Le Galibier - Ambrée</span>
+                        <span class="drink-price">5,80€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">La Chouffe - Blonde</span>
+                        <span class="drink-price">6,20€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Bière artisanale du Queyras</span>
+                        <span class="drink-price">6,00€</span>
+                    </div>
+                </div>
+
+                <div class="drink-category">
+                    <h3><i class="fas fa-wine-glass-alt"></i> Vins Locaux</h3>
+                    <div class="drink-item">
+                        <span class="drink-name">Vin rouge - Côtes du Briançonnais</span>
+                        <span class="drink-price">6,50€ / verre</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Vin rosé - Domaine des Hautes-Alpes</span>
+                        <span class="drink-price">6,00€ / verre</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Vin blanc - Savoie AOC</span>
+                        <span class="drink-price">6,20€ / verre</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Cidre Val de Rance</span>
+                        <span class="drink-price">5,50€</span>
+                    </div>
+                </div>
+
+                <div class="drink-category">
+                    <h3><i class="fas fa-glass-whiskey"></i> Spiritueux</h3>
+                    <div class="drink-item">
+                        <span class="drink-name">Génépi des Alpes</span>
+                        <span class="drink-price">6,00€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Chartreuse Verte</span>
+                        <span class="drink-price">7,00€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Chartreuse Jaune</span>
+                        <span class="drink-price">7,00€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Whisky local de montagne</span>
+                        <span class="drink-price">8,00€</span>
+                    </div>
+                </div>
+
+                <div class="drink-category">
+                    <h3><i class="fas fa-glass-cheers"></i> Rafraîchissements</h3>
+                    <div class="drink-item">
+                        <span class="drink-name">Jus de fruits Altiflor</span>
+                        <span class="drink-price">4,50€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Jus de fruits Granini</span>
+                        <span class="drink-price">4,50€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Thé froid maison aux agrumes</span>
+                        <span class="drink-price">4,00€</span>
+                    </div>
+                    <div class="drink-item">
+                        <span class="drink-name">Eaux minérales (plate/gazeuse)</span>
+                        <span class="drink-price">3,00€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Info Section -->
+    <section class="container" id="contact">
+        <div class="section-bg">
+            <h2>Nous Trouver</h2>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horaires d'ouverture</h3>
+                    <div class="hours">
+                        <span>Saison d'été :</span>
+                        <span>Tous les jours</span>
+                        <span>Horaires :</span>
+                        <span>9h à 22h en continu</span>
+                    </div>
+                    <p style="margin-top: 1rem; font-style: italic;">Ouvert toute l'année selon saison - Consultez notre site pour les horaires hors saison</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>Le Vauban Gourmand<br>
+                    55 Grande Rue<br>
+                    05100 Briançon<br>
+                    (dans la vieille ville)</p>
+                    <p style="margin-top: 1rem;">
+                        <i class="fas fa-phone"></i> Téléphone : <strong>06 73 42 36 50</strong><br>
+                        <i class="fas fa-envelope"></i> Email : <strong>valerie.deschampt@orange.fr</strong>
+                    </p>
+
+                    <div class="reservation-info" style="margin-top: 20px;">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Réservation</h3>
+                        <p>Pour réserver une table, veuillez appeler le :</p>
+                        <div class="phone-number">06 73 42 36 50</div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-concierge-bell"></i>
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Plats à emporter (fondue, raclette)</li>
+                        <li>Plats préparés à emporter</li>
+                        <li>Privatisation du restaurant (20 places)</li>
+                        <li>Pâtisseries maison pour le goûter</li>
+                        <li>Service en continu</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="map" style="height:400px;">
+              <iframe
+                src="https://www.google.com/maps?q=55+Grande+Rue+Brian%C3%A7on+France&output=embed"
+                width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-section">
+                <h3>Le Vauban Gourmand</h3>
+                <p>Cuisine montagnarde "comme à la maison" au cœur de Briançon</p>
+                <p>Tenus par Hubert et Valérie</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    <a href="mailto:valerie.deschampt@orange.fr"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Nos Menus</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-utensils"></i> Spécialités Montagnardes</a></li>
+                    <li><a href="#brunch"><i class="fas fa-coffee"></i> Brunchs</a></li>
+                    <li><a href="#boissons"><i class="fas fa-glass-cheers"></i> Boissons</a></li>
+                    <li><a href="#"><i class="fas fa-pancakes"></i> Crêpes et Desserts</a></li>
+                    <li><a href="#"><i class="fas fa-bread-slice"></i> Paninis et Snacks</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="#a-propos"><i class="fas fa-info-circle"></i> À propos</a></li>
+                    <li><a href="#contact"><i class="fas fa-map-marked-alt"></i> Contact et Horaires</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-bag"></i> Plats à emporter</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Privatisation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Engagements</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Produits locaux et de qualité</li>
+                    <li><i class="fas fa-check-circle"></i> Fait maison</li>
+                    <li><i class="fas fa-check-circle"></i> Fromages AOP et IGP</li>
+                    <li><i class="fas fa-check-circle"></i> Farines biologiques</li>
+                    <li><i class="fas fa-check-circle"></i> Glaces sans additifs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2023 Le Vauban Gourmand - Restaurant Montagnard à Briançon | Tous droits réservés
+        </div>
+    </footer>
+</body>
+</html>
