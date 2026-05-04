@@ -1,0 +1,18 @@
+assets:
+  - name: "Air Liquide"
+    isin: "FR0000120073"
+    type: "action"
+    currency: "EUR"
+    notes: "Gaz industriels et médicaux"
+
+  - name: "Amundi PEA S&P 500 Screened UCITS ETF Acc"
+    isin: "FR0013412285"
+    type: "etf"
+    currency: "EUR"
+    notes: "Réplication synthétique"
+
+  - name: "DNCA Invest Value Europe Class B"
+    isin: "LU0284396289"
+    type: "fonds"
+    currency: "EUR"
+    notes: "Approche value"
